@@ -26,3 +26,24 @@
   }
 }
 
+#window-bar {
+  -webkit-app-region: drag;
+  height: 30px; 
+  padding: none;
+  margin: 0px; 
+}
+
+#window-bar-btns {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  top: 0px;
+  right: 6px;
+  display: flex;
+  align-items: center;
+
+  div {
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

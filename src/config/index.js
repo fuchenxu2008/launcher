@@ -1,0 +1,1 @@
+export const ROOT_URL = 'http://118.190.21.245'

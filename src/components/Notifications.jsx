@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function Notifications() {
   return (
-    <div>Notifications</div>
+    <div>
+      <iframe src="" frameBorder="0" title='Notifications'></iframe>
+    </div>
   )
 }

@@ -2,7 +2,7 @@ import './App.scss';
 import Carousel from './components/Carousel'
 import Notifications from './components/Notifications'
 import Icons from './components/Icons'
-import Button from './components/Button'
+import WindowBar from './components/WindowBar'
 
 function App() {
   return (
@@ -11,13 +11,13 @@ function App() {
         <Carousel />
       </div>
       <div className="panel">
+        <WindowBar/>
         <div className="notifications">
           <Notifications />
         </div>
         <div className="icons">
           <Icons />
         </div>
-        <Button>启动</Button>
       </div>
     </div>
   );

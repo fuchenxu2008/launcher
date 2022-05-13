@@ -1,19 +1,19 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require("electron");
-const path = require("path");
-const url = require("url");
+const { app, BrowserWindow, protocol, ipcMain } = require('electron');
+const path = require('path');
+const url = require('url');
+const child = require('child_process').execFile;
 
 // Create the native browser window.
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1200,
+    height: 400,
     // Set the path of an additional "preload" script that can be used to
     // communicate between node-land and browser-land.
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, 'preload.js'),
     },
-    // autoHideMenuBar: true,
     frame: false,
     // https://stackoverflow.com/questions/35876939/frameless-window-with-controls-in-electron-windows
   });
@@ -23,11 +23,11 @@ function createWindow() {
   // In development, set it to localhost to allow live/hot-reloading.
   const appURL = app.isPackaged
     ? url.format({
-        pathname: path.join(__dirname, "index.html"),
-        protocol: "file:",
+        pathname: path.join(__dirname, 'index.html'),
+        protocol: 'file:',
         slashes: true,
       })
-    : "http://localhost:3000";
+    : 'http://localhost:3000';
   mainWindow.loadURL(appURL);
 
   // Automatically open Chrome's DevTools in development mode.
@@ -40,13 +40,13 @@ function createWindow() {
 // them from the local production bundle (e.g.: local fonts, etc...).
 function setupLocalFilesNormalizerProxy() {
   protocol.registerHttpProtocol(
-    "file",
+    'file',
     (request, callback) => {
       const url = request.url.substr(8);
       callback({ path: path.normalize(`${__dirname}/${url}`) });
     },
     (error) => {
-      if (error) console.error("Failed to register protocol");
+      if (error) console.error('Failed to register protocol');
     }
   );
 }
@@ -58,7 +58,7 @@ app.whenReady().then(() => {
   createWindow();
   setupLocalFilesNormalizerProxy();
 
-  app.on("activate", function () {
+  app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -70,8 +70,8 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS.
 // There, it's common for applications and their menu bar to stay active until
 // the user quits  explicitly with Cmd + Q.
-app.on("window-all-closed", function () {
-  if (process.platform !== "darwin") {
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
@@ -79,9 +79,9 @@ app.on("window-all-closed", function () {
 // If your app has no need to navigate or only needs to navigate to known pages,
 // it is a good idea to limit navigation outright to that known scope,
 // disallowing any other kinds of navigation.
-const allowedNavigationDestinations = "https://my-electron-app.com";
-app.on("web-contents-created", (event, contents) => {
-  contents.on("will-navigate", (event, navigationUrl) => {
+const allowedNavigationDestinations = 'https://my-electron-app.com';
+app.on('web-contents-created', (event, contents) => {
+  contents.on('will-navigate', (event, navigationUrl) => {
     const parsedUrl = new URL(navigationUrl);
 
     if (!allowedNavigationDestinations.includes(parsedUrl.origin)) {
@@ -92,3 +92,26 @@ app.on("web-contents-created", (event, contents) => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// Window control
+ipcMain.on('minimize', () => {
+  const win = BrowserWindow.getFocusedWindow();
+  win.minimize();
+});
+ipcMain.on('quit', () => {
+  app.quit();
+});
+
+// Execute exe file
+const executablePath = 'D:\\Apps\\PotPlayer\\PotPlayerMini64.exe';
+
+ipcMain.on('open_exe', () => {
+  console.log('open_exe');
+  child(executablePath, function (err, data) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(data.toString());
+  });
+});
