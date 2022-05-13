@@ -1,0 +1,28 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  .ads {
+    width: 60%;
+  }
+
+  .panel {
+    height: 100%;
+    width: 40%;
+    // background-color: black;
+
+    display: flex;
+    flex-direction: column;
+
+    .notifications {
+      // background-color: green;
+      height: 50%;
+    }
+
+    .icons {
+      // background-color: blue;
+      height: 50%;
+    }
+  }
+}
+

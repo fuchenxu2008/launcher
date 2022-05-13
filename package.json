@@ -9,7 +9,10 @@
   "build": {
     "appId": "com.electron.launcher",
     "productName": "Launcher App",
-    "files": ["build/**/*", "node_modules/**/*"],
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "directories": {
       "buildResources": "public"
     },
@@ -30,6 +33,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.51.0",
+    "swiper": "^8.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

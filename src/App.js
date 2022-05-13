@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Carousel from './components/Carousel'
+import Notifications from './components/Notifications'
+import Icons from './components/Icons'
+import Button from './components/Button'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="ads">
+        <Carousel />
+      </div>
+      <div className="panel">
+        <div className="notifications">
+          <Notifications />
+        </div>
+        <div className="icons">
+          <Icons />
+        </div>
+        <Button>启动</Button>
+      </div>
     </div>
   );
 }

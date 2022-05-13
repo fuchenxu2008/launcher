@@ -6,15 +6,15 @@ const url = require("url");
 // Create the native browser window.
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1000,
     height: 600,
     // Set the path of an additional "preload" script that can be used to
     // communicate between node-land and browser-land.
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
-    autoHideMenuBar: true,
-    // frame: false,
+    // autoHideMenuBar: true,
+    frame: false,
     // https://stackoverflow.com/questions/35876939/frameless-window-with-controls-in-electron-windows
   });
 
