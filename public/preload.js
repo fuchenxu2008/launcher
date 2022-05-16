@@ -7,5 +7,15 @@ const { contextBridge, ipcRenderer } = require("electron");
 // They'll be accessible at "window.versions".
 process.once("loaded", () => {
   contextBridge.exposeInMainWorld("versions", process.versions);
-  contextBridge.exposeInMainWorld("ipcRenderer", ipcRenderer);
+  contextBridge.exposeInMainWorld("ipc", {
+    send: (channel, data) => {
+      ipcRenderer.send(channel, data);
+    },
+    on: (channel, listener) => {
+      ipcRenderer.on(channel, listener);
+      return () => {
+        ipcRenderer.removeListener(channel, listener);
+      }
+    }
+  });
 });

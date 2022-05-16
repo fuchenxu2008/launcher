@@ -4,10 +4,10 @@ export default function WindowBar() {
   useEffect(() => {
     function init() {
       document.getElementById('min-btn').onclick = function () {
-        window.ipcRenderer.send('minimize');
+        window.ipc.send('minimize');
       };
       document.getElementById('close-btn').onclick = function () {
-        window.ipcRenderer.send('quit');
+        window.ipc.send('quit');
       };
     }
     init();

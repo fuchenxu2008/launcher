@@ -1,13 +1,14 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol, ipcMain } = require('electron');
+const { app, BrowserWindow, protocol, ipcMain, shell } = require('electron');
 const path = require('path');
 const url = require('url');
 const child = require('child_process').execFile;
+const axios = require('axios');
 
 // Create the native browser window.
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 1200,
+    width: 1000,
     height: 400,
     // Set the path of an additional "preload" script that can be used to
     // communicate between node-land and browser-land.
@@ -15,7 +16,8 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
     },
     frame: false,
-    // https://stackoverflow.com/questions/35876939/frameless-window-with-controls-in-electron-windows
+    resizable: false,
+    icon: './icon.png'
   });
 
   // In production, set the initial browser path to the local bundle generated
@@ -103,15 +105,26 @@ ipcMain.on('quit', () => {
 });
 
 // Execute exe file
-const executablePath = 'D:\\Apps\\PotPlayer\\PotPlayerMini64.exe';
-
-ipcMain.on('open_exe', () => {
-  console.log('open_exe');
+ipcMain.on('open_exe', (_, executablePath) => {
   child(executablePath, function (err, data) {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(data.toString());
   });
+});
+
+// Open url
+ipcMain.on('open_link', (_, url) => {
+  shell.openExternal(url);
+});
+
+// Get url title
+let fetching = false;
+ipcMain.on('getTitleFromUrl', (event, url) => {
+  if (fetching) return;
+  axios.get(url).then(res => {
+    const title = res.data.match(/<title>(.*?)<\/title>/)[1];
+    event.reply('updateTitle', title);
+  })
 });

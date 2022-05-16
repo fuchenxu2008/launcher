@@ -6,10 +6,7 @@ import icon4 from '../icons/4.ico'
 
 export default function Icons() {
   function handleClick() {
-    window.ipcRenderer.send('open_exe')
-    console.log(
-      'open exe'
-    );
+    window.ipc.send('open_exe', 'D:\\Apps\\PotPlayer\\PotPlayerMini64.exe')
   }
 
   return (

@@ -2,13 +2,14 @@
   width: 100vw;
   height: 100vh;
   display: flex;
+
   .ads {
-    width: 60%;
+    width: 75%;
   }
 
   .panel {
     height: 100%;
-    width: 40%;
+    width: 25%;
     // background-color: black;
 
     display: flex;
@@ -26,11 +27,24 @@
   }
 }
 
+.sponsor-page {
+
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+}
+
 #window-bar {
   -webkit-app-region: drag;
   height: 30px; 
   padding: none;
-  margin: 0px; 
+  margin: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 #window-bar-btns {
