@@ -4,25 +4,28 @@
   display: flex;
 
   .ads {
-    width: 75%;
+    width: 65%;
   }
 
   .panel {
     height: 100%;
-    width: 25%;
-    // background-color: black;
+    width: 35%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+
 
     display: flex;
     flex-direction: column;
 
     .notifications {
       // background-color: green;
-      height: 50%;
+      // height: 50%;
+      flex: 1;
     }
 
     .icons {
       // background-color: blue;
-      height: 50%;
+      // height: 50%;
     }
   }
 }

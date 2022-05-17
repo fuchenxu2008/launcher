@@ -12,7 +12,7 @@ export default function Notifications() {
 
   return (
     <div>
-      {title}
+      <h2>{title}</h2>
     </div>
   )
 }

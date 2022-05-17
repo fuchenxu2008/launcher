@@ -23,7 +23,7 @@ export default function Icons() {
 const styles = {
   icons: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   icon: {

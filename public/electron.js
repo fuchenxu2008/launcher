@@ -9,7 +9,7 @@ const axios = require('axios');
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1000,
-    height: 400,
+    height: 600,
     // Set the path of an additional "preload" script that can be used to
     // communicate between node-land and browser-land.
     webPreferences: {
