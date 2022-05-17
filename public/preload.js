@@ -6,7 +6,6 @@ const { contextBridge, ipcRenderer } = require("electron");
 // and node versions to the main window.
 // They'll be accessible at "window.versions".
 process.once("loaded", () => {
-  contextBridge.exposeInMainWorld("versions", process.versions);
   contextBridge.exposeInMainWorld("ipc", {
     send: (channel, data) => {
       ipcRenderer.send(channel, data);
