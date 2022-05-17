@@ -5,20 +5,14 @@ import Notifications from './components/Notifications';
 import Icons from './components/Icons';
 import Sponsor from './components/Sponsor';
 import WindowBar from './components/WindowBar';
+import Button from './components/Button';
 
 function App() {
   const [showSponsor, setShowSponsor] = useState(false);
 
   return (
     <div>
-      <WindowBar />
-
-      <button
-        onClick={setShowSponsor.bind(this, !showSponsor)}
-        style={{ position: 'fixed', top: '20px', right: '20px', zIndex: 10 }}
-      >
-        sponsor
-      </button>
+      <WindowBar showBack={showSponsor} goBack={setShowSponsor.bind(this, false)} />
 
       <div className={`App ${showSponsor ? 'hidden' : ''}`}>
         <div className="ads">
@@ -28,6 +22,7 @@ function App() {
           <div className="notifications">
             <Notifications />
           </div>
+          <Button onClick={setShowSponsor.bind(this, !showSponsor)}>赞助商</Button>
           <div className="icons">
             <Icons />
           </div>

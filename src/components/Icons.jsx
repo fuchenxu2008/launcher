@@ -13,7 +13,10 @@ export default function Icons() {
     <div style={styles.icons}>
       {
         [icon1, icon2, icon3, icon4].map((icon, i) => (
-          <img src={icon} alt="" key={i} style={styles.icon} onClick={handleClick} />
+          <div style={styles.wrapper} key={i}>
+            <img src={icon} alt="" style={styles.icon} onClick={handleClick} />
+            <span style={styles.label}>加速器</span>
+          </div>
         ))
       }
     </div>
@@ -23,10 +26,21 @@ export default function Icons() {
 const styles = {
   icons: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   icon: {
     cursor: 'pointer',
+    marginBottom: 4
+  },
+  label: {
+    fontSize: 11,
+    color: '4d4d4d'
   }
 }

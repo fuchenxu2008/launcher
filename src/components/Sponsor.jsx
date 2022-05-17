@@ -30,14 +30,19 @@ export default function Sponsor() {
 
 const styles = {
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    padding: 70
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateRows: 'repeat(3, 1fr)',
+    gap: 40,
+    padding: 70,
   },
   logo: {
     width: 100,
     height: 100,
-    marginRight: 70,
-    marginBottom: 70
+    justifySelf: 'center',
+    alignSelf: 'center',
   }
 }

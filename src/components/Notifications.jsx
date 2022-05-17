@@ -11,8 +11,21 @@ export default function Notifications() {
   }, []);
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <div style={styles.container}>
+      <h2 style={styles.title}>{title}</h2>
+      <p style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, ad odio. Animi culpa impedit, totam repellat sint, aspernatur porro in delectus quos dolorum nesciunt vitae quis! Commodi sapiente iste iusto.</p>
     </div>
   )
+}
+
+const styles = {
+  container: {
+    paddingTop: '20%'
+  },
+  title: {
+    color: '#2d2d2d'
+  },
+  description: {
+    color: '#4d4d4d'
+  }
 }
