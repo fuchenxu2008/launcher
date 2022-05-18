@@ -6,6 +6,9 @@ const path = require('path');
 const url = require('url');
 const child = require('child_process').execFile;
 const axios = require('axios');
+// const Store = require('electron-store');
+
+// const store = new Store();
 
 function isVibrancySupported() {
 	// Windows 10 or greater

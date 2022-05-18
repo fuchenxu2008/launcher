@@ -32,6 +32,7 @@ export default function Carousel() {
       modules={[Pagination, Autoplay]}
       resistanceRatio={0}
       autoplay={{ delay: 5000 }}
+      loop
     >
       {banners.map((banner) => (
         <SwiperSlide key={banner.id} style={styles.swiperItem}>

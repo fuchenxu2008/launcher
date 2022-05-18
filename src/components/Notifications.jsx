@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Notifications() {
-  const [title, setTitle] = useState('Title');
+  const [title, setTitle] = useState('Loading Title...');
 
   useEffect(() => {
     const removeListener = window.ipc.on('updateTitle', (_, title) => setTitle(title));

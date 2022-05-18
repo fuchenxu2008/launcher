@@ -5,7 +5,7 @@ import Notifications from './components/Notifications';
 import Icons from './components/Icons';
 import Sponsor from './components/Sponsor';
 import WindowBar from './components/WindowBar';
-import Button from './components/Button';
+import SponsorBtn from './components/SponsorBtn';
 
 function App() {
   const [showSponsor, setShowSponsor] = useState(false);
@@ -22,7 +22,6 @@ function App() {
           <div className="notifications">
             <Notifications />
           </div>
-          <Button onClick={setShowSponsor.bind(this, !showSponsor)}>赞助商</Button>
           <div className="icons">
             <Icons />
           </div>
@@ -32,6 +31,8 @@ function App() {
       <div className={`sponsor-page ${showSponsor ? '' : 'hidden'}`}>
         <Sponsor />
       </div>
+
+      <SponsorBtn onClick={setShowSponsor.bind(this, !showSponsor)} />
     </div>
   );
 }
