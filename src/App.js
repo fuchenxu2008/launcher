@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.scss';
 import Carousel from './components/Carousel';
 import Notifications from './components/Notifications';
-import Icons from './components/Icons';
+import Programs from './components/Programs';
 import Sponsor from './components/Sponsor';
 import WindowBar from './components/WindowBar';
 import SponsorBtn from './components/SponsorBtn';
@@ -23,7 +23,7 @@ function App() {
             <Notifications />
           </div>
           <div className="icons">
-            <Icons />
+            <Programs />
           </div>
         </div>
       </div>
