@@ -1,27 +1,5 @@
 import React from 'react'
-import icon1 from '../icons/1.ico'
-import icon2 from '../icons/2.ico'
-import icon3 from '../icons/3.ico'
-import icon4 from '../icons/4.ico'
-
-const programs = [
-  {
-    icon: icon1,
-    exePath: 'C:\\Program Files (x86)\\Feed Management Systems\\Brill Formulation\\BRMBW32.exe',
-  },
-  {
-    icon: icon2,
-    exePath: 'C:\\Program Files (x86)\\Feed Management Systems\\Brill Formulation\\WINMAINT.exe',
-  },
-  {
-    icon: icon3,
-    exePath: 'C:\\Program Files (x86)\\Common Files\\Feed Management Systems\\Foundation Utilities\\FMSFoundationUtilities.exe',
-  },
-  {
-    icon: icon4,
-    exePath: 'D:\\Apps\\PotPlayer\\PotPlayerMini64.exe',
-  },
-]
+import { programs } from '../config'
 
 export default function Programs() {
   function handleClick(exePath) {
@@ -33,8 +11,8 @@ export default function Programs() {
       {
         programs.map((program, i) => (
           <div style={styles.wrapper} key={i}>
-            <img src={program.icon} alt="" style={styles.icon} onClick={handleClick.bind(this, program.exePath)} />
-            <span style={styles.label}>加速器</span>
+            <img src={`exeIcons/${program.icon}`} alt="" style={styles.icon} onClick={handleClick.bind(this, program.exePath)} />
+            <span style={styles.label}>{program.name}</span>
           </div>
         ))
       }

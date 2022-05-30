@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { getBanners } from '../api/carousel';
+import { carousels } from '../config';
 
 export default function Carousel() {
-  const [banners, setBanners] = useState([]);
-
-  useEffect(() => {
-    getBanners().then((banners) => {
-      setBanners(banners);
-    });
-  }, []);
-
   function getImageStyle(imgUrl) {
     return {
       ...styles.img,
@@ -34,11 +26,11 @@ export default function Carousel() {
       autoplay={{ delay: 5000 }}
       loop
     >
-      {banners.map((banner) => (
-        <SwiperSlide key={banner.id} style={styles.swiperItem}>
+      {carousels.map((carousel) => (
+        <SwiperSlide key={carousel.id} style={styles.swiperItem}>
           <div
-            style={getImageStyle(banner.url)}
-            onClick={openLink.bind(this, banner.file)}
+            style={getImageStyle(carousel.url)}
+            onClick={openLink.bind(this, carousel.file)}
           />
         </SwiperSlide>
       ))}
