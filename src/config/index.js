@@ -57,7 +57,7 @@ export const programs = [
   },
   {
     icon: '4.ico',
-    exePath: 'D:\\Apps\\PotPlayer\\PotPlayerMini64.exe',
+    exePath: 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
     name: '加速器4'
   },
 ]

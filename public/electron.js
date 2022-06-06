@@ -42,7 +42,6 @@ function createWindow() {
     },
     frame: false,
     resizable: false,
-    icon: __dirname + '/favicon.ico',
     vibrancy,
   });
 
