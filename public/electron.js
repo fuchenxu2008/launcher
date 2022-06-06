@@ -42,6 +42,7 @@ function createWindow() {
     },
     frame: false,
     resizable: false,
+    icon: __dirname + '/icon.png',
     vibrancy,
   });
 
