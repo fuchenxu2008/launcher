@@ -5,6 +5,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { carousels } from '../config';
 
+// Used for caching and preload images
+// eslint-disable-next-line no-unused-vars
+const images = carousels.map(c => {
+  const a = new Image()
+  a.src = c.url
+  return a
+})
+
 export default function Carousel() {
   function getImageStyle(imgUrl) {
     return {
