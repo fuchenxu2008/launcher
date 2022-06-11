@@ -13,7 +13,7 @@ export default function Notifications() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>{title}</h2>
+      <h1 style={styles.title}>{title}</h1>
       <p style={styles.description}>{notiDesc}</p>
     </div>
   )
@@ -24,7 +24,9 @@ const styles = {
     paddingTop: '20%'
   },
   title: {
-    color: '#2d2d2d'
+    color: '#2d2d2d',
+    lineHeight: 1.5,
+    whiteSpace: 'pre-wrap'
   },
   description: {
     color: '#4d4d4d'

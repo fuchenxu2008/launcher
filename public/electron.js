@@ -128,7 +128,8 @@ let fetching = false;
 ipcMain.on('getTitleFromUrl', (event, url) => {
   if (fetching) return;
   axios.get(url).then(res => {
-    const title = res.data.match(/<title>(.*?)<\/title>/)[1];
-    event.reply('updateTitle', title);
+    // const title = res.data.match(/<title>(.*?)<\/title>/)[1];
+    // event.reply('updateTitle', title);
+    event.reply('updateTitle', '欢迎使用\nBRILL综合启动界面');
   })
 });
