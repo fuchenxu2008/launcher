@@ -5,6 +5,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { carousels } from '../config';
 
+const chosenCarousels = [...randomPick(carousels.slice(1), 4), carousels[0]]
+
+function randomPick(arr, count) {
+  const shuffled = arr.sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, count)
+}
+
 export default function Carousel() {
   function getImageStyle(imgUrl) {
     return {
@@ -26,11 +33,11 @@ export default function Carousel() {
       autoplay={{ delay: 5000 }}
       loop
     >
-      {carousels.map((carousel) => (
+      {chosenCarousels.map((carousel) => (
         <SwiperSlide key={carousel.id} style={styles.swiperItem}>
           <div
-            style={getImageStyle(carousel.url)}
-            onClick={openLink.bind(this, carousel.file)}
+            style={getImageStyle(carousel.imgUrl)}
+            onClick={openLink.bind(this, carousel.link)}
           />
         </SwiperSlide>
       ))}

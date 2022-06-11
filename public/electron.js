@@ -1,36 +1,14 @@
 // Module to control the application lifecycle and the native browser window.
 const { app, protocol, ipcMain, shell } = require('electron');
 const { BrowserWindow } = require("electron-acrylic-window");
-const os = require('os');
 const path = require('path');
 const url = require('url');
 const child = require('child_process').execFile;
 const axios = require('axios');
-// const Store = require('electron-store');
-
-// const store = new Store();
-
-function isVibrancySupported() {
-	// Windows 10 or greater
-	return (
-		process.platform === 'win32' &&
-		parseInt(os.release().split('.')[0]) >= 10
-	)
-}
 
 // Create the native browser window.
 function createWindow() {
   let vibrancy = 'light'
-
-	if (isVibrancySupported()) {
-		// vibrancy = {
-		// 	theme: 'light',
-		// 	effect: 'acrylic',
-		// 	useCustomWindowRefreshMethod: true,
-		// 	disableOnBlur: true,
-		// 	debug: false,
-		// }
-	}
 
   const mainWindow = new BrowserWindow({
     width: 1000,
@@ -42,7 +20,7 @@ function createWindow() {
     },
     frame: false,
     resizable: false,
-    icon: __dirname + '/icon.png',
+    icon: __dirname + '/icon.ico',
     vibrancy,
   });
 
