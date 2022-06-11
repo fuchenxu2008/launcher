@@ -25,7 +25,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingBottom: '25%'
+    paddingBottom: '40%'
   },
   wrapper: {
     display: 'flex',

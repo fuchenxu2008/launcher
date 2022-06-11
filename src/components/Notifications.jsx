@@ -21,7 +21,7 @@ export default function Notifications() {
 
 const styles = {
   container: {
-    paddingTop: '20%'
+    paddingTop: '28%'
   },
   title: {
     color: '#2d2d2d',

@@ -1,5 +1,5 @@
 {
-  "name": "launcher",
+  "name": "BRILL-launcher",
   "version": "0.1.0",
   "private": true,
   "author": "Launcher",
@@ -8,7 +8,7 @@
   "main": "./public/electron.js",
   "build": {
     "appId": "com.electron.launcher",
-    "productName": "Launcher App",
+    "productName": "BRILL Launcher",
     "files": [
       "build/**/*",
       "node_modules/**/*"
