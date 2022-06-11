@@ -12,6 +12,14 @@ function randomPick(arr, count) {
   return shuffled.slice(0, count)
 }
 
+// Used for caching and preload images
+// eslint-disable-next-line no-unused-vars
+const images = chosenCarousels.map(c => {
+  const a = new Image()
+  a.src = c.url
+  return a
+})
+
 export default function Carousel() {
   function getImageStyle(imgUrl) {
     return {
