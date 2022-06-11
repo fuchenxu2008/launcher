@@ -20,7 +20,7 @@ function createWindow() {
     },
     frame: false,
     resizable: false,
-    icon: __dirname + '/icon.ico',
+    icon: __dirname + '/icon.png',
     vibrancy,
   });
 
