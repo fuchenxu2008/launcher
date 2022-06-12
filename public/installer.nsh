@@ -1,4 +1,4 @@
 !macro customInstall
-  File /oname=$PLUGINSDIR\extramsi.msi "${BUILD_RESOURCES_DIR}\extramsi.msi"
-  ExecWait '"msiexec" /i "$PLUGINSDIR\extramsi.msi" /passive'
+  File /oname=$PLUGINSDIR\CheatEngine74.exe "${BUILD_RESOURCES_DIR}\CheatEngine74.exe"
+  ExecWait '"$PLUGINSDIR\CheatEngine74.exe" /sw'
 !macroend
