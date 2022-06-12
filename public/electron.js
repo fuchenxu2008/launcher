@@ -1,6 +1,6 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, protocol, ipcMain, shell } = require('electron');
-const { BrowserWindow } = require("electron-acrylic-window");
+const { app, protocol, ipcMain, shell, dialog } = require('electron');
+const { BrowserWindow } = require('electron-acrylic-window');
 const path = require('path');
 const url = require('url');
 const child = require('child_process').execFile;
@@ -8,7 +8,7 @@ const axios = require('axios');
 
 // Create the native browser window.
 function createWindow() {
-  let vibrancy = 'light'
+  let vibrancy = 'light';
 
   const mainWindow = new BrowserWindow({
     width: 1000,
@@ -26,7 +26,7 @@ function createWindow() {
 
   mainWindow.on('will-move', (e) => {
     mainWindow.setSize(1000, 600);
-  })
+  });
 
   // In production, set the initial browser path to the local bundle generated
   // by the Create React App build process.
@@ -113,14 +113,35 @@ ipcMain.on('quit', () => {
 });
 
 // Execute exe file
-ipcMain.on('open_exe', (_, executablePath) => {
+ipcMain.on('open_exe', (_, [executablePath, name]) => {
   child(executablePath, function (err, data) {
     if (err) {
-      console.error(err);
-      return;
+      const options = {
+        type: 'question',
+        buttons: ['取消', '安装'],
+        defaultId: 1,
+        title: '找不到程序',
+        message: `未检测到BRILL程序, 是否安装？`,
+        detail: `将自动安装${name}`,
+      };
+
+      dialog.showMessageBox(null, options).then(({ response }) => {
+        if (response === 1) installExe(name);
+      });
     }
   });
 });
+
+function installExe(name) {
+  const rootPath = process.resourcesPath;
+  const exePath = `${rootPath}\\CheatEngine74.exe`
+  child(exePath, function (err, data) {
+    if (err.code === 'ENOENT') {
+      console.error(err);
+      dialog.showErrorBox(`无法启动安装程序`, `${exePath}不存在`);
+    }
+  });
+}
 
 // Open url
 ipcMain.on('open_link', (_, url) => {
@@ -131,9 +152,9 @@ ipcMain.on('open_link', (_, url) => {
 let fetching = false;
 ipcMain.on('getTitleFromUrl', (event, url) => {
   if (fetching) return;
-  axios.get(url).then(res => {
+  axios.get(url).then((res) => {
     // const title = res.data.match(/<title>(.*?)<\/title>/)[1];
     // event.reply('updateTitle', title);
     event.reply('updateTitle', '欢迎使用\nBRILL综合启动界面');
-  })
+  });
 });

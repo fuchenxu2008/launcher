@@ -72,24 +72,29 @@ export const programs = [
   {
     icon: '1.ico',
     exePath: 'C:\\Program Files (x86)\\Feed Management Systems\\Brill Formulation\\BRMBW32.exe',
-    name: '加速器'
+    name: '优化模块'
   },
   {
     icon: '2.ico',
     exePath: 'C:\\Program Files (x86)\\Feed Management Systems\\Brill Formulation\\WINMAINT.exe',
-    name: '加速器2'
+    name: '维护模块'
   },
   {
     icon: '3.ico',
     exePath: 'C:\\Program Files (x86)\\Common Files\\Feed Management Systems\\Foundation Utilities\\FMSFoundationUtilities.exe',
-    name: '加速器3' 
+    name: '设置模块' 
   },
   {
     icon: '4.ico',
     exePath: 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
-    name: '加速器4'
+    name: '数据处理'
   },
 ]
+
+/**
+ * 汉化程序路径
+ */
+export const translatedPath = 'C:\\Program Files (x86)\\Feed Management Systems\\Brill Formulation\\translate.bat';
 
 /**
  * 赞助商logo

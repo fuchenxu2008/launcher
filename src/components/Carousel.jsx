@@ -16,7 +16,7 @@ function randomPick(arr, count) {
 // eslint-disable-next-line no-unused-vars
 const images = chosenCarousels.map(c => {
   const a = new Image()
-  a.src = c.url
+  a.src = c.imgUrl
   return a
 })
 

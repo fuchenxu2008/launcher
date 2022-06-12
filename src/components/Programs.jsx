@@ -2,8 +2,8 @@ import React from 'react'
 import { programs } from '../config'
 
 export default function Programs() {
-  function handleClick(exePath) {
-    window.ipc.send('open_exe', exePath)
+  function handleClick(exePath, name) {
+    window.ipc.send('open_exe', [exePath, name])
   }
 
   return (
@@ -11,7 +11,7 @@ export default function Programs() {
       {
         programs.map((program, i) => (
           <div style={styles.wrapper} key={i}>
-            <img src={`exeIcons/${program.icon}`} alt="" style={styles.icon} onClick={handleClick.bind(this, program.exePath)} />
+            <img src={`exeIcons/${program.icon}`} alt="" style={styles.icon} onClick={handleClick.bind(this, program.exePath, program.name)} />
             <span style={styles.label}>{program.name}</span>
           </div>
         ))
